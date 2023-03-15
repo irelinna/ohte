@@ -4,6 +4,8 @@
 
 En tiedä vielä mikä se on mutta siitä tulee **varmasti** *todella* hieno.
 
+:D 
+
 ### Tehtävät
 
 #### Viikko 1
