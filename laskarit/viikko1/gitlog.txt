@@ -1,0 +1,113 @@
+commit 3882af5170f6b4d89aedfa83710935f586773fb9
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:21:12 2023 +0200
+
+    asioita muutettu
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit cadc21add8026dc3844e4908b906bc0d045c59f8
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:16:54 2023 +0200
+
+    uusia tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 0686780d3d968593e2e4e2ec9174ab5e46b7be3d
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:11:54 2023 +0200
+
+    tiedostoja muokattu
+
+ eka.txt    |  2 --
+ kolmas.txt | 18 ++++++++++++++++++
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+commit 930513cb61f67508b9a04fd4de19aff78b8dab6e
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:06:38 2023 +0200
+
+    tiedosto uudelleennimetty
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 8d31c92033cce0521641fe3b8fbce53d91cdf6fa
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:05:05 2023 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit a5ea87c6cd07dc12c2add1ddb6c813b4fc04b7b7
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:02:50 2023 +0200
+
+    tekstiä muutettu
+
+ tiedosto.txt | 37 ++++++++++++++++++-------------------
+ 1 file changed, 18 insertions(+), 19 deletions(-)
+
+commit 325687c76fa00e7ba45b0ac9061427deb62edcd7
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 16:00:37 2023 +0200
+
+    tekstiä lisätty
+
+ tiedosto.txt | 141 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 140 insertions(+), 1 deletion(-)
+
+commit b6b223c6e71c58c5a41225855001399c26c51a84
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 15:52:10 2023 +0200
+
+    stuff added
+
+ stuff/asiaa.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b252402e16c8a87a06f005ed2e50f155aa263971
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 15:49:40 2023 +0200
+
+    toista ja kolmatta muokattu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 46337719d4ec99d54ad5da8f1ac60d2d253ac045
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 15:48:49 2023 +0200
+
+    kolmas asia lisätty
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ecff197373ef33c4fa914ffdf30e5be3bcabd3ef
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 15:47:16 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 8ce508062786c0a351eff9a621db93e98c811259
+Author: Irene Linnanen <irene.linnanen@hotmail.com>
+Date:   Wed Mar 15 15:42:57 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
