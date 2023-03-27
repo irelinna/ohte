@@ -18,3 +18,5 @@
 
 [määrittelydokumentti](https://github.com/irelinna/ohte/blob/main/dokumentaatio/maarittelydokumentti.md)
 
+[tuntikirjanpito](https://github.com/irelinna/ohte/blob/main/dokumentaatio/tuntikirjanpito.md)
+
