@@ -1,15 +1,15 @@
-#Määrittelydokumentti
+# Määrittelydokumentti
 
-##Sovelluksen tarkoitus
+## Sovelluksen tarkoitus
 
 Sovelluksen avulla käyttäjät pystyvät luomaan ostoslistoja.
 
 
-##Käyttäjät
+## Käyttäjät
 Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä. Sovellukseen saatetaan lisätä suuremmilla oikeuksilla varustettu pääkäyttäjä, jos sitä tarvitaan käyttäjien hallintaan yms.
 
 
-##Suunnitellut toiminnallisuudet
+## Suunnitellut toiminnallisuudet
 Ennen kirjautumista:
 - Käyttäjä voi luoda käyttäjätunnuksen.
 - Käyttäjätunnuksen luomiseen vaaditaan uniikki käyttäjätunnus, joka on vähintään 3 merkkiä.
@@ -25,7 +25,7 @@ Kirjautumisen jälkeen:
 - Käyttäjä voi kirjautua ulos järjestelmästä
 
 
-##Jatkokehitysideat
+## Jatkokehitysideat
 - Käyttäjä voi tallentaa ostoslistoja "suosikeiksi" jotta kokonaisia listoja voi käyttää uudelleen
 - Suosikkilistoja voi myös muokata ja tallentaa erilaisiksi
 - jotain muuta, katsotaan myöhemmin
