@@ -67,9 +67,16 @@ class TestMaksukortti(unittest.TestCase):
 
     def test_lataa_rahaa_toimii(self):
         kortti = Maksukortti(1000)
-        self.assertNotEqual(self.kassapaate.lataa_rahaa_kortille(kortti,-500))
-        self.assertEqual(self.kassapaate.lataa_rahaa_kortille(kortti,500))
+        self.kassapaate.lataa_rahaa_kortille(kortti,500)
         self.assertEqual(kortti.saldo,1500)
         self.assertEqual(self.kassapaate.kassassa_rahaa,100500)
+
+    def test_lataa_rahaa_ei_toimi(self):
+        kortti = Maksukortti(1000)
+        self.kassapaate.lataa_rahaa_kortille(kortti,-500)
+        self.assertEqual(kortti.saldo,1000)
+        self.assertEqual(self.kassapaate.kassassa_rahaa,100000)
+
+
         
         
