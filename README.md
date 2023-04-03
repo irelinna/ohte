@@ -11,5 +11,5 @@
 
 #### Viikko 3
 
-En tehnyt tehtäviä tällä viikolla mutta olen tehnyt sovellusta eteenpäin (en vain saanut sitä vielä toimimaan tarpeeksi hyvin), palautan sitten ensi viikon deadlineen mennessä sovelluksesta perusversion.
+Tein harjoitustyötehtävistä 1, 5-7, ja olen tehnyt sovellusta eteenpäin (en vain saanut sitä vielä toimimaan tarpeeksi hyvin), palautan sitten ensi viikon deadlineen mennessä sovelluksesta perusversion.
 
