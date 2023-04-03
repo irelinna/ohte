@@ -2,4 +2,7 @@
 Projektin suunnittelua
 
 ## Viikko 3
-- Tähän mitä tällä viikolla tulee tehtyä
+- Sovelluksen perusrakenteen suunnittelu
+- Repositiot
+- Yritin yhdistää tietokannan mutta ei vielä toimi
+- Sovelluksen metodit
