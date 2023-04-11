@@ -2,3 +2,8 @@
 __pycache__
 .coverage
 htmlcov
+.vscode
+items.csv
+database.sqlite
+test-items.csv
+test-database.sqlite
