@@ -10,3 +10,9 @@ ei harjoitustyötä
 7h sovelluksen perusrakenteen tekemiseen ja yleiseen työkalujen opetteluun
 
 ###### Viikko 4: 
+
+noin 3-4 tuntia yleiseen säätämiseen koska pääsiäinen ja kiire
+
+###### Viikko 5:
+
+12 tuntia sovelluksen edistämiseen, tietokannan yhdistämiseen, testien tekemiseen jne
