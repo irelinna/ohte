@@ -10,7 +10,6 @@ def start(ctx):
 def test(ctx):
     ctx.run("pytest src", pty=True)
 
-
 #poetry run invoke coverage-report
 @task
 def coverage(ctx):
