@@ -16,5 +16,5 @@ Projektin suunnittelua
 - paljon troubleshooting ja mietintöjä siitä miten sovelluksen toiminallisuus toimisi parhaiten
 - graafista käyttöliittymää kasaan pikkuhiljaa
 - testejä kirjoitettu user_repositorylle
-- tietokannan yhdistäminen
+- tietokannan yhdistäminen (yritystä ainakin, ei toimi vielä)
 
