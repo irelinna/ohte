@@ -36,7 +36,7 @@ class ListRepository:
 
     def delete(self, list_id):
         #poistaa tietyn listan
-        #todo
+        
         lists = self.find_all()
 
         lists_without_id = filter(lambda list: list.id != list_id, lists)
@@ -59,14 +59,14 @@ class ListRepository:
                 row = row.replace("\n", "")
                 parts = row.split(";")
                 list_id = parts[0]
-                content = parts[1]
+                items = parts[1]
                 username = parts[2]
 
                 user = user_repository.find_by_username(
                     username) if username else None
 
                 lists.append(
-                    List(content, user, list_id)
+                    List(items, user, list_id)
                 )
 
         return lists
@@ -78,7 +78,7 @@ class ListRepository:
             for list in lists:
                 username = list.user.username if list.user else ""
 
-                row = f"{list.id};{list.content};{username}"
+                row = f"{list.id};{list.items};{username}"
 
                 file.write(row+"\n")
 
