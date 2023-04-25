@@ -21,4 +21,4 @@ noin 3-4 tuntia yleiseen säätämiseen koska pääsiäinen ja kiire
 
 5-6 tuntia tietokannan kanssa säätöön ja käyttöliittymän aloittamiseen
 
-##### yhteensä n. 30h
+#### tähän mennessä yhteensä n. 30h
