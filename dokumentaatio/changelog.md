@@ -18,3 +18,8 @@ Projektin suunnittelua
 - testejä kirjoitettu user_repositorylle
 - tietokannan yhdistäminen (yritystä ainakin, ei toimi vielä)
 
+## Viikko 6
+- tietokanta toimii
+- vaihdoin tekstikäyttöliittymään
+- pitää refaktoroida hieman ensi viikolla
+
