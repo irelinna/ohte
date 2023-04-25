@@ -16,3 +16,9 @@ noin 3-4 tuntia yleiseen säätämiseen koska pääsiäinen ja kiire
 ###### Viikko 5:
 
 12 tuntia sovelluksen edistämiseen, tietokannan yhdistämiseen, testien tekemiseen jne
+
+###### Viikko 6:
+
+5-6 tuntia tietokannan kanssa säätöön ja käyttöliittymän aloittamiseen
+
+##### yhteensä n. 30h
