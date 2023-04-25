@@ -1,15 +1,10 @@
-from tkinter import Tk
-from ui.ui import UI
+
+from ui.ui import UserInterface
 
 
 def main():
-    window = Tk()
-    window.title("Grocery lists galore")
-
-    ui_view = UI(window)
-    ui_view.start()
-
-    window.mainloop()
+    #käynnistä tekstikäyttöliittymä
+    UserInterface.start()
 
 
 if __name__ == "__main__":

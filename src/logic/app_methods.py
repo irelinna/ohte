@@ -17,7 +17,7 @@ from repositories.list_repository import (
 
 
 
-class appMethods:
+class AppMethods:
     #the logic and structure of the application is here
 
     #constructor
@@ -32,18 +32,19 @@ class appMethods:
         self._user = None
         self._item_repository = item_repository
         self._user_repository = user_repository
+        self._list_repository = list_repository
 
     def create_item(self, content):
        
         item = Item(content=content, user=self._user)
 
-        return self._item_repository.create(item)
+        return self._item_repository.create_item(item)
     
     def create_list(self, content):
        
         list = List(content=content, user=self._user)
 
-        return self._list_repository.create(list)
+        return self._list_repository.create_list(list)
 
 
     def login(self, username, password):
@@ -73,7 +74,7 @@ class appMethods:
         if username_exists:
             raise UsernameExistsError(f"Username {username} already exists")
 
-        user = self._user_repository.create(User(username, password))
+        user = self._user_repository.create_user(User(username, password))
 
         if login:
             self._user = user
@@ -90,4 +91,4 @@ class UsernameExistsError(Exception):
     pass
 
 
-app_methods = appMethods()
+app_methods = AppMethods()
