@@ -38,6 +38,15 @@ class UserRepository:
 
         self._connection.commit()
         return user
+    
+    def get_user_id(self,username):
+        #finds user id when given username
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "select user_id from users where username = ?",
+            (username,)
+        )
 
 
 

@@ -1,86 +1,54 @@
 from entities.list import List
-from repositories.user_repository import user_repository
-from pathlib import Path
-from config import LISTS_FILE_PATH
+from user_repository import user_repository
+from database_connection import get_database_connection
+
+
+def get_list(row):
+    #find list 
+    return List(row["list_id"], row["list_name"]) if row else None
 
 
 class ListRepository:
 
-    def __init__(self, file_path):
-        self._file_path = file_path
+    def __init__(self, connection):
+        self._connection = connection
 
 
-    def find_all(self):
-        return self._read()
+    def find_lists_by_username(self, username):
+        #returns list by username
+        cursor = self._connection.cursor()
 
+        user_id = user_repository.get_user_id(username)
 
-    def find_by_username(self, username):
-        lists = self.find_all()
+        cursor.execute(
+            "select * from lists where user_id = ?",
+            (user_id,)
+        )
 
-        user_made_lists = filter(
-            lambda list: list.user and list.user.username == username, lists)
-
-        return list(user_made_lists)
+        row = cursor.fetchone()
+        return get_list(row)
 
     def create_list(self, list):
-        #luo uuden listan tietokantaan
-        lists = self.find_all()
+        #creates a new list and returns it
+        cursor = self._connection.cursor()
 
-        lists.append(list)
+        cursor.execute(
+            "insert into lists (list_name, user_id) values (?, ?)",
+            (list.list_name, list.user_id)
+        )
 
-        self._write(lists)
-
+        self._connection.commit()
         return list
+    
+    def get_list_id(self,list_name):
+        #finds list id when given list name
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "select list_id from lists where list_name = ?",
+            (list_name,)
+        )
 
 
 
-    def delete(self, list_id):
-        #poistaa tietyn listan
-        
-        lists = self.find_all()
-
-        lists_without_id = filter(lambda list: list.id != list_id, lists)
-
-        self._write(lists_without_id)
-
-    def delete_all(self):
-        self._write([])
-
-    def _ensure_file_exists(self):
-        Path(self._file_path).touch()
-
-    def _read(self):
-        lists = []
-
-        self._ensure_file_exists()
-
-        with open(self._file_path, encoding="utf-8") as file:
-            for row in file:
-                row = row.replace("\n", "")
-                parts = row.split(";")
-                list_id = parts[0]
-                items = parts[1]
-                username = parts[2]
-
-                user = user_repository.find_by_username(
-                    username) if username else None
-
-                lists.append(
-                    List(items, user, list_id)
-                )
-
-        return lists
-
-    def _write(self, lists):
-        self._ensure_file_exists()
-
-        with open(self._file_path, "w", encoding="utf-8") as file:
-            for list in lists:
-                username = list.user.username if list.user else ""
-
-                row = f"{list.id};{list.items};{username}"
-
-                file.write(row+"\n")
-
-
-list_repository = ListRepository(LISTS_FILE_PATH)
+list_repository = ListRepository(get_database_connection())

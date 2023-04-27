@@ -1,86 +1,54 @@
 from entities.item import Item
-from repositories.user_repository import user_repository
-from pathlib import Path
-from config import ITEMS_FILE_PATH
+from list_repository import list_repository
+from database_connection import get_database_connection
+
+
+def get_item(row):
+    #find item 
+    return Item(row["item_id"], row["list_id"],row["content"]) if row else None
 
 
 class ItemRepository:
 
-    def __init__(self, file_path):
-        self._file_path = file_path
+    def __init__(self, connection):
+        self._connection = connection
 
 
-    def find_all(self):
-        return self._read()
+    def find_items_by_list(self, list_name):
+        #returns items by list name
+        cursor = self._connection.cursor()
 
+        list_id = list_repository.get_list_id(list_name)
 
-    def find_by_username(self, username):
-        items = self.find_all()
+        cursor.execute(
+            "select * from items where list_id = ?",
+            (list_id,)
+        )
 
-        user_made_items = filter(
-            lambda item: item.user and item.user.username == username, items)
-
-        return list(user_made_items)
+        row = cursor.fetchall()
+        return get_item(row)
 
     def create_item(self, item):
-        #luo tavaran tietokantaan
-        items = self.find_all()
+        #creates a new item and returns it
+        cursor = self._connection.cursor()
 
-        items.append(item)
+        cursor.execute(
+            "insert into items (list_id, content) values (?, ?)",
+            (item.list_id, item.content)
+        )
 
-        self._write(items)
-
+        self._connection.commit()
         return item
+    
+    def get_item_id(self,content):
+        #finds item id when given item content
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "select item_id from items where content = ?",
+            (content,)
+        )
 
 
 
-    def delete(self, item_id):
-        #poistaa tietyn tavaran
-        #todo
-        items = self.find_all()
-
-        items_without_id = filter(lambda item: item.id != item_id, items)
-
-        self._write(items_without_id)
-
-    def delete_all(self):
-        self._write([])
-
-    def _ensure_file_exists(self):
-        Path(self._file_path).touch()
-
-    def _read(self):
-        items = []
-
-        self._ensure_file_exists()
-
-        with open(self._file_path, encoding="utf-8") as file:
-            for row in file:
-                row = row.replace("\n", "")
-                parts = row.split(";")
-                item_id = parts[0]
-                content = parts[1]
-                username = parts[2]
-
-                user = user_repository.find_by_username(
-                    username) if username else None
-
-                items.append(
-                    Item(content, user, item_id)
-                )
-
-        return items
-
-    def _write(self, items):
-        self._ensure_file_exists()
-
-        with open(self._file_path, "w", encoding="utf-8") as file:
-            for item in items:
-                username = item.user.username if item.user else ""
-
-                row = f"{item.id};{item.content};{username}"
-
-                file.write(row+"\n")
-
-
-item_repository = ItemRepository(ITEMS_FILE_PATH)
+item_repository = ItemRepository(get_database_connection())

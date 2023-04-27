@@ -8,5 +8,3 @@ class ConsoleIO:
     def read(self):
         user_input = input(self)
         return user_input
-
-    input()
