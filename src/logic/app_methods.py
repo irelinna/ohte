@@ -34,17 +34,30 @@ class AppMethods:
         self._user_repository = user_repository
         self._list_repository = list_repository
 
-    def create_item(self, content):
-       
-        item = Item(content=content, user=self._user)
+
+
+    def create_item(self, content, list_id):
+        #create a new item and save to repository
+        
+        item = Item(content=content, list_id = list_id)
 
         return self._item_repository.create_item(item)
     
-    def create_list(self, content):
+
+
+    def create_list(self, list_name):
        
-        list = List(content=content, user=self._user)
+        list = List(list_name = list_name, user_id = self._user_repository.get_user_id(self._user))
 
         return self._list_repository.create_list(list)
+    
+
+    def add_item_to_list(self, item_name, list_name):
+
+        list_id = self._list_repository.get_list_id(list_name)
+
+        return self.create_item(item_name, list_id)
+
 
 
     def login(self, username, password):

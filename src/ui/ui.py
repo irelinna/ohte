@@ -61,19 +61,28 @@ class UserInterface:
         username = self._io.read("username: ")
         password = self._io.read("password: ")
         self._methods.create_user(username,password)
+
+    def _create_item(self):
+        self._methods.create_item(content, list_id)
         
 
     def _create_list(self):
         list_name = self._io.read("list name: ")
-        items = 
 
         self._methods.create_list(list_name)
+
+        item_name = self._io.read("write the items you want to add one at a time, write exit to finish list:")
+
+        while item_name != 'exit':
+            self._methods.create_item(item_name)
+
+        
 
 
     def _add_item_to_list(self):
         item = self._io.read("which item would you like to add?:")
         list = self._io.read("which list would you like to add it to?:")
-        self._methods.add_item_to_list()
+        self._methods.add_item_to_list(item,list)
 
     def logout(self):
         self._methods.logout()
