@@ -40,6 +40,7 @@ class UserRepository:
         row = cursor.fetchone()
         return get_user(row)
 
+
     def create_user(self, user):
         """Creates a new user and returns the User-object of the new user.
 

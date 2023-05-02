@@ -17,7 +17,6 @@ class ItemRepository:
             connection: the database connection object
         """
 
-
         self._connection = connection
 
 
