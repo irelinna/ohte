@@ -39,4 +39,4 @@ Olen tehnyt projektia edelleen eteenpäin, mutta atm hieman ongelmia tietokannan
 
 #### Viikko 6
 
-Keskityn loppupalautukseen mutta olen tehnyt käyttöliittymän lähes valmiiksi, tietokanta toimii.
+Keskityn loppupalautukseen mutta olen tehnyt käyttöliittymän valmiiksi, tietokanta toimii, sovelluksen voi käynnistää ainakin omalla koneella, ja dokumentaatio on tehty sekä Entities- että Repositories-kansioiden tiedostoille. Tein arkkitehtuurikuvaukseen alustavan version ja päivitin tuntikirjanpidon, changelogin, ja määrittelydokumentin.

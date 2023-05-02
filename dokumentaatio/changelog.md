@@ -15,11 +15,9 @@ Projektin suunnittelua
 ## Viikko 5
 - paljon troubleshooting ja mietintöjä siitä miten sovelluksen toiminallisuus toimisi parhaiten
 - graafista käyttöliittymää kasaan pikkuhiljaa
-- testejä kirjoitettu user_repositorylle
-- tietokannan yhdistäminen (yritystä ainakin, ei toimi vielä)
+- tietokanta toimii
 
 ## Viikko 6
-- tietokanta toimii
-- vaihdoin tekstikäyttöliittymään
-- pitää refaktoroida hieman ensi viikolla
+- sovelluksen voi käynnistää (omalla koneella ainakin, testaan loppupalautukseen että varmasti toimii laitoksen koneilla) ja kaikki palaset ovat olemassa, säädän vielä käyttöliittymän kanssa hieman että se toimisi kunnolla
+- testejä kirjoitettu item_repositorylle ja user_repositorylle
 
