@@ -39,9 +39,4 @@ Olen tehnyt projektia edelleen eteenpäin, mutta atm hieman ongelmia tietokannan
 
 #### Viikko 6
 
-Olen ollut kipeänä, niin hieman huonosti tullut tehtyä tätä mutta teen kyllä edelleen...en tehnyt nyt harjoitustehtäviä ollenkaan
-
-
-README:stä puuttuu ohjelman suoritukseen, linttaamiseen ja testikattavuusraportin luomiseen tarvittavat komennot.
-
-README:ssä tulisi olla lyhyt kuvaus ohjelmasta, pari lausetta riittää.
+Keskityn loppupalautukseen mutta olen tehnyt käyttöliittymän lähes valmiiksi, tietokanta toimii.
