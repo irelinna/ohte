@@ -1,6 +1,8 @@
 # Ohjelmistotekniikka
 
 ## Ostoslistasovellus
+
+Sovelluksen avulla käyttäjät voivat luoda ostoslistoja, ja lisätä sinne haluamansa tavarat. Listoille voi lisätä tavaroita, listoja voi poistaa, ja käyttäjän luomat listat voi hakea.
  
 
 [changelog](https://github.com/irelinna/ohte/blob/main/dokumentaatio/changelog.md)
@@ -10,6 +12,22 @@
 [tuntikirjanpito](https://github.com/irelinna/ohte/blob/main/dokumentaatio/tuntikirjanpito.md)
 
 [arkkitehtuuri](https://github.com/irelinna/ohte/blob/main/dokumentaatio/arkkitehtuuri.md)
+
+### Ohjelman suoritus:
+Asenna riippuvuudet terminaalissa komennolla: poetry install
+
+Alusta ohjelma komennolla: poetry run invoke build
+
+Käynnistä sovellus komennolla: poetry run invoke start
+
+### Testaus: 
+Suorita testit komennolla: poetry run invoke test
+
+Generoi testikattavuusraportti komennolla: poetry run invoke coverage-report
+
+### Pylint:
+Suorita pylintin laatutarkistukset komennolla: poetry run invoke lint
+
 
 #### Viikko 3
 
@@ -23,3 +41,7 @@ Olen tehnyt projektia edelleen eteenpäin, mutta atm hieman ongelmia tietokannan
 
 Olen ollut kipeänä, niin hieman huonosti tullut tehtyä tätä mutta teen kyllä edelleen...en tehnyt nyt harjoitustehtäviä ollenkaan
 
+
+README:stä puuttuu ohjelman suoritukseen, linttaamiseen ja testikattavuusraportin luomiseen tarvittavat komennot.
+
+README:ssä tulisi olla lyhyt kuvaus ohjelmasta, pari lausetta riittää.
