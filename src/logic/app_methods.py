@@ -38,7 +38,7 @@ class AppMethods:
 
     def create_item(self, content, list_id):
         #create a new item and save to repository
-        
+
         item = Item(content=content, list_id = list_id)
 
         return self._item_repository.create_item(item)
@@ -51,13 +51,29 @@ class AppMethods:
 
         return self._list_repository.create_list(list)
     
+    
+    def delete_list(self, list_name):
+
+        self._list_repository.delete_list(list_name)
+    
+
+
+    def get_list_id(self, list_name):
+
+        list_id = self._list_repository.get_list_id(list_name)
+
+        return list_id
+    
 
     def add_item_to_list(self, item_name, list_name):
 
         list_id = self._list_repository.get_list_id(list_name)
 
         return self.create_item(item_name, list_id)
-
+    
+    def find_list_by_name(self, list_name):
+        items = self._item_repository.find_items_by_list_name(list_name)
+        return items
 
 
     def login(self, username, password):

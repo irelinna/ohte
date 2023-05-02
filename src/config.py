@@ -8,12 +8,6 @@ try:
 except FileNotFoundError:
     pass
 
-ITEMS_FILENAME = os.getenv("ITEMS_FILENAME") or "items.csv"
-ITEMS_FILE_PATH = os.path.join(dirname, "..", "data", ITEMS_FILENAME)
-print(ITEMS_FILE_PATH)
-
-LISTS_FILENAME = os.getenv("LISTS_FILENAME") or "lists.csv"
-LISTS_FILE_PATH = os.path.join(dirname, "..", "data", LISTS_FILENAME)
 
 DATABASE_FILENAME = os.getenv("DATABASE_FILENAME") or "database.sqlite"
 DATABASE_FILE_PATH = os.path.join(dirname, "..", "data", DATABASE_FILENAME)

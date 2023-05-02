@@ -1,10 +1,9 @@
-
 from ui.ui import UserInterface
 
 
 def main():
     #käynnistä tekstikäyttöliittymä
-    UserInterface.start()
+    UserInterface().start()
 
 
 if __name__ == "__main__":
