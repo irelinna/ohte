@@ -4,8 +4,8 @@ from database_connection import get_database_connection
 
 
 def get_item(row):
-    #find item 
-    return Item(row["item_id"], row["list_id"],row["content"]) if row else None
+
+    return Item(row[item_id], row["list_id"],row["content"]) if row else None
 
 
 class ItemRepository:
@@ -21,7 +21,7 @@ class ItemRepository:
         self._connection = connection
 
 
-    def find_items_by_list(self, list_name):
+    def find_items_by_list_name(self, list_name):
         
         """Returns items by list name.
 
@@ -34,6 +34,25 @@ class ItemRepository:
         cursor = self._connection.cursor()
 
         list_id = ListRepository.get_list_id(list_name)
+
+        cursor.execute(
+            "select * from items where list_id = ?",
+            (list_id,)
+        )
+
+        row = cursor.fetchall()
+        return get_item(row)
+    
+    def find_items_by_list_id(self, list_id):
+        """Returns items by list id.
+
+        Args:
+            list_id: The id of the list.
+
+        Returns:
+            Returns a list of Item-objects.
+        """
+        cursor = self._connection.cursor()
 
         cursor.execute(
             "select * from items where list_id = ?",
@@ -79,6 +98,30 @@ class ItemRepository:
         )
         item_id = cursor.fetchone()
         return item_id
+    
+    def find_all(self):
+        """Returns all existing items.
+        Returns:
+            A list of Item-objects.
+        """
+
+        cursor = self._connection.cursor()
+
+        cursor.execute("select * from items")
+
+        rows = cursor.fetchall()
+
+        return list(map(get_item, rows))
+    
+    def delete_all(self):
+        """Deletes all items.
+        """
+
+        cursor = self._connection.cursor()
+
+        cursor.execute("delete from items")
+
+        self._connection.commit()
 
 
 
