@@ -1,8 +1,7 @@
 from entities.user import User
 from database_connection import get_database_connection
 
-# these are pretty much straight from the material 
-# because there's not really a better way of doing these
+
 
 def get_user(row):
     #find user 
@@ -10,13 +9,27 @@ def get_user(row):
 
 
 class UserRepository:
-
+    """The class responsible for the user database and its commands
+    """
     def __init__(self, connection):
-        self._connection = connection
+        """The constructor of the class
+        Args: 
+            connection: the database connection object
+        """
 
+        self._connection = connection
+        
 
     def find_by_username(self, username):
-        #returns user by username
+        """Returns user by username.
+
+        Args:
+            username: The username of the user that should be returned.
+
+        Returns:
+            Returns a User-object, if the user is in the database, otherwise returns None.
+        """
+
         cursor = self._connection.cursor()
 
         cursor.execute(
@@ -28,7 +41,14 @@ class UserRepository:
         return get_user(row)
 
     def create_user(self, user):
-        #creates a new user and returns it
+        """Creates a new user and returns the User-object of the new user.
+
+        Args:
+            User: the User-object that is created in app_methods is sent here and added to database.
+
+        Returns:
+            The new user as User-object.
+        """
         cursor = self._connection.cursor()
 
         cursor.execute(
@@ -40,7 +60,11 @@ class UserRepository:
         return user
     
     def get_user_id(self,username):
-        #finds user id when given username
+        """Finds user id when given username.
+
+        Args:
+            username: The username of the user whose user_id should be returned.
+        """
         cursor = self._connection.cursor()
 
         cursor.execute(
