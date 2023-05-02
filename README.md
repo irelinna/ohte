@@ -29,6 +29,8 @@ Generoi testikattavuusraportti komennolla: poetry run invoke coverage-report
 Suorita pylintin laatutarkistukset komennolla: poetry run invoke lint
 
 
+## Viikkotehtävät:
+
 #### Viikko 3
 
 Tein harjoitustyötehtävistä 1, 5-7, ja olen tehnyt sovellusta eteenpäin (en vain saanut sitä vielä toimimaan tarpeeksi hyvin), palautan sitten ensi viikon deadlineen mennessä sovelluksesta perusversion.
