@@ -6,7 +6,7 @@ Sovelluksen avulla käyttäjät pystyvät luomaan ostoslistoja.
 
 
 ## Käyttäjät
-Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä. Sovellukseen saatetaan lisätä suuremmilla oikeuksilla varustettu pääkäyttäjä, jos sitä tarvitaan käyttäjien hallintaan yms.
+Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä. 
 
 
 ## Suunnitellut toiminnallisuudet
@@ -19,13 +19,6 @@ Ennen kirjautumista:
 
 Kirjautumisen jälkeen:
 - Käyttäjä voi luoda uusia ostoslistoja
-- Käyttäjä voi muokata olemassa olevia ostoslistoja
-- Käyttäjä voi merkitä listasta asian ostetuksi, mutta asia ei poistu listalta vaan merkitään "ostetuksi"
-- Ostoslistoja voi käyttää uudelleen
+- Käyttäjä voi lisätä uusia tavaroita ostoslistalle
+- Käyttäjä voi poistaa ostoslistan
 - Käyttäjä voi kirjautua ulos järjestelmästä
-
-
-## Jatkokehitysideat
-- Käyttäjä voi tallentaa ostoslistoja "suosikeiksi" jotta kokonaisia listoja voi käyttää uudelleen
-- Suosikkilistoja voi myös muokata ja tallentaa erilaisiksi
-- jotain muuta, katsotaan myöhemmin
