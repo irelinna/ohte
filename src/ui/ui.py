@@ -13,11 +13,18 @@ ACTIONS = {
 
 
 class UserInterface:
+    """Class responsible for the user interface.
+    """
     def __init__(self):
+        """Constructor
+        """
         self._methods = AppMethods()
     
 
     def start(self):
+        """Starts the application and shows the UI to the user.
+        """
+
         print("Grocery list app")
         self._print_instructions()
 
@@ -48,22 +55,36 @@ class UserInterface:
         
 
     def _print_instructions(self):
+        """Prints instructions from dictionary ACTIONS.
+        """
+
         for value in ACTIONS.items():
             print(value)
 
 
     def _login(self):
+        """Reads input for login.
+        """
         username = print("username: ")
         password = print("password: ")
         self._methods.login(username,password)
 
 
     def _create_user(self):
-        print("creating new user:")
-        username = input("username: ")
-        password = input("password: ")
-        self._methods.create_user(username,password)
-
+        if self._methods.get_user() == None:
+            print("creating new user:")
+            username = input("username: ")
+            password = input("password: ")
+            self._methods.create_user(username,password)
+        else:
+            action = input("You seem to be logged in. Do you want to log out? y/n")
+            if action == "y":
+                self._logout()
+            elif action == "n":
+                self._print_instructions()
+            else:
+                print("invalid action")
+                self._print_instructions()
 
     def _create_item(self, content, list_id):
         self._methods.create_item(content, list_id)
