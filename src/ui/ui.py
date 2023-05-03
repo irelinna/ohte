@@ -107,11 +107,9 @@ class UserInterface:
         self._methods.find_list_by_name(list_name)
 
 
-
     def _delete_list(self):
         list_name = input("which list would you like removed: ")
         self._methods.delete_list(list_name)
-
 
 
     def _add_item_to_list(self):
