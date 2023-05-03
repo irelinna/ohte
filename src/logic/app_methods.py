@@ -167,8 +167,6 @@ class AppMethods:
         self._user = None
 
 
-    #create new user and check for existing username
-
     def create_user(self, username, password, login=True):
         """Create new user.
 
