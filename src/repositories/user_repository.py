@@ -60,18 +60,6 @@ class UserRepository:
         self._connection.commit()
         return user
     
-    def get_user_id(self,username):
-        """Finds user id when given username.
-
-        Args:
-            username: The username of the user whose user_id should be returned.
-        """
-        cursor = self._connection.cursor()
-
-        cursor.execute(
-            "select user_id from users where username = ?",
-            (username,)
-        )
     
     def find_all(self):
         """Returns all existing users.
