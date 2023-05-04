@@ -1,7 +1,7 @@
 class User:
 
     """A class for a user:
-    Attributes: username and password of the user
+    Attributes: user_id, username and password of the user
     """
 
     def __init__(self, username, password):

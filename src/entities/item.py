@@ -8,6 +8,6 @@ class Item:
     """
 
     def __init__(self, item_id, list_id, content):
-        self.content = content
+        self.item_id = item_id
         self.list_id = list_id
-        self.id = item_id
+        self.content = content

@@ -6,7 +6,7 @@ class List:
     user_id = the id of the user who made the list
     """
 
-    def __init__(self, list_id, list_name, user_id):
-        self.id = list_id
-        self.name = list_name
-        self.user_id = user_id
+    def __init__(self, list_id, list_name, username):
+        self.list_id = list_id
+        self.list_name = list_name
+        self.username = username
