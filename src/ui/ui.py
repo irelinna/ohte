@@ -30,7 +30,6 @@ class UserInterface:
 
         while True:
             action = input("action: ")
-
             if not action in ACTIONS:
                 print("nonexistent action")
                 self._print_instructions()
@@ -59,14 +58,14 @@ class UserInterface:
         """
 
         for value in ACTIONS.items():
-            print(value)
+            print(value[1])
 
 
     def _login(self):
         """Reads input for login.
         """
-        username = print("username: ")
-        password = print("password: ")
+        username = input("username: ")
+        password = input("password: ")
         self._methods.login(username,password)
 
 
@@ -91,6 +90,7 @@ class UserInterface:
         
 
     def _create_list(self):
+        print("creating list")
         list_name = input("list name: ")
         self._methods.create_list(list_name)
 
@@ -100,6 +100,8 @@ class UserInterface:
 
         while item_name != 'exit':
             self._methods.create_item(item_name, list_id)
+        
+        self._print_instructions()
 
     def _find_list(self):
         list_name = input("which list would you like to see:")

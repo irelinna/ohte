@@ -4,12 +4,12 @@ from invoke import task
 #poetry run invoke start
 @task
 def start(ctx):
-    ctx.run("python3 src/index.py", pty=True)
+    ctx.run("python3 src/index.py")
 
 #poetry run invoke test
 @task
 def test(ctx):
-    ctx.run("pytest src", pty=True)
+    ctx.run("pytest src")
 
 #poetry run invoke coverage-report
 @task

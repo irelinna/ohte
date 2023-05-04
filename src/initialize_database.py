@@ -2,32 +2,52 @@ from database_connection import get_database_connection
 
 
 def drop_tables(connection):
-    #deletes table
+    """Deletes tables from database.
+    Args: 
+        connection: the database connection object
+    """
     cursor = connection.cursor()
 
     cursor.execute("""
         drop table if exists users;
     """)
 
+    cursor.execute("""
+        drop table if exists lists;
+    """)
+
+    cursor.execute("""
+        drop table if exists items;
+    """)
+
     connection.commit()
 
 
 def create_tables(connection):
-    #creates tables
+    """Creates database tables.
+    Args: 
+        connection: the database connection object
+    """
 
     cursor = connection.cursor()
     cursor.execute("""
-        create table users (
-            username text primary key,
-            password text
-        );
+        CREATE TABLE users (username TEXT PRIMARY KEY UNIQUE, password TEXT NOT NULL);
+    """)
+
+    cursor.execute("""
+        CREATE TABLE lists (list_id INTEGER PRIMARY KEY, list_name TEXT NOT NULL, username TEXT, FOREIGN KEY (username) REFERENCES users (username));
+    """)
+
+    cursor.execute("""
+        CREATE TABLE items (item_id INTEGER PRIMARY KEY, list_id INTEGER, content TEXT NOT NULL, FOREIGN KEY (list_id) REFERENCES lists (list_id));
     """)
 
     connection.commit()
 
 
 def initialize_database():
-    #initializes the database
+    """Initializes the database.
+    """
 
     connection = get_database_connection()
     drop_tables(connection)

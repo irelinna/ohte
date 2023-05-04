@@ -72,7 +72,7 @@ class AppMethods:
             The created List-object.
         """
        
-        list = List(list_name = list_name, user_id = self._user_repository.get_user_id(self._user))
+        list = List(list_name = list_name, username = self._user)
 
         return self._list_repository.create_list(list)
     
