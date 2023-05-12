@@ -4,11 +4,11 @@ from invoke import task
 #poetry run invoke start
 @task
 def start(ctx):
-    a = ctx.run("python3 src/index.py")
+    a = ctx.run("python3 src/index.py", pty=True)
     print(a)
     
     
-
+#oetry run invoke build
 @task
 def build(ctx):
     ctx.run("python3 src/build.py", pty=True)
@@ -16,7 +16,7 @@ def build(ctx):
 #poetry run invoke test
 @task
 def test(ctx):
-    ctx.run("pytest src")
+    ctx.run("pytest src", pty=True)
 
 #poetry run invoke coverage-report
 @task
