@@ -37,7 +37,7 @@ class AppMethods:
             user_repository: Object that has methods set from the UserRepository class. Defaults to default_user_repository.
             list_repository: Object that has methods set from the ListRepository class. Defaults to default_list_repository.
         """
-        
+        print('testing 123')
         self._user = None
         self._item_repository = item_repository
         self._user_repository = user_repository
@@ -45,7 +45,7 @@ class AppMethods:
 
 
 
-    def create_item(self, content, list_id):
+    def create_item(self, list_id, content):
         """Creates a new item and saves it to item_repository.
 
         Args:
@@ -56,9 +56,8 @@ class AppMethods:
             The created Item-object.
         """
 
-        item = Item(content=content, list_id = list_id)
 
-        return self._item_repository.create_item(item)
+        return self._item_repository.create_item(list_id, content)
     
 
 
@@ -72,9 +71,8 @@ class AppMethods:
             The created List-object.
         """
        
-        list = List(list_name = list_name, username = self._user)
 
-        return self._list_repository.create_list(list)
+        return self._list_repository.create_list(list_name, self._user)
     
     
     def delete_list(self, list_name):
@@ -118,6 +116,7 @@ class AppMethods:
 
         return self.create_item(item_name, list_id)
     
+
     def find_list_by_name(self, list_name):
         """Finds list by name.
 
@@ -149,7 +148,7 @@ class AppMethods:
         user = self._user_repository.find_by_username(username)
 
         if not user or user.password != password:
-            raise InvalidCredentialsError("Invalid username or password")
+            return False
 
         self._user = user
 
