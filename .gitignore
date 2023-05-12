@@ -4,10 +4,4 @@ __pycache__
 htmlcov
 .vscode
 
-#data
-items.csv
-database.sqlite
-lists.csv
-test-lists.csv
-test-items.csv
 test-database.sqlite
