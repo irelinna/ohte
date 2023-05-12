@@ -1,5 +1,5 @@
 from entities.item import Item
-from repositories.list_repository import ListRepository
+from repositories.list_repository import list_repository
 from database_connection import get_database_connection
 
 
@@ -18,8 +18,17 @@ class ItemRepository:
 
         self._connection = connection
 
+    def get_item_by_name(self,content):
+        cursor = self._connection.cursor()
 
-    def create_item(self, item):
+        cursor.execute(
+            "select * from items where content = ?",
+            (content,)
+        )
+        returned_item = cursor.fetchone()
+        return returned_item
+
+    def create_item(self, list_id, content):
         """Creates a new item and returns the Item-object of the new item.
 
         Args:
@@ -32,11 +41,12 @@ class ItemRepository:
 
         cursor.execute(
             "insert into items (list_id, content) values (?, ?)",
-            (item.list_id, item.content)
+            (list_id, content)
         )
 
         self._connection.commit()
-        return item
+        return self.get_item_by_name(content)
+    
     
     def get_item_id(self,content):
         """Finds item id when given item content.
@@ -54,7 +64,7 @@ class ItemRepository:
             (content,)
         )
         item_id = cursor.fetchone()
-        return item_id
+        return item_id[0]
     
     def find_all(self):
         """Returns all existing items.
@@ -83,7 +93,7 @@ class ItemRepository:
         """
         cursor = self._connection.cursor()
 
-        list_id = ListRepository.get_list_id(list_name)
+        list_id = list_repository.get_list_id(list_name)
 
         cursor.execute(
             "select * from items where list_id = ?",
@@ -91,7 +101,14 @@ class ItemRepository:
         )
 
         rows = cursor.fetchall()
-        return list(map(get_item, rows))
+        #prints kahvi, want to print all items from a list. 
+        #seems that there is a lot of duplicate data in the database
+        for row in rows:
+            print(rows[row[0]][2])
+        print(rows[0][2])
+        print(rows[4][2])
+        return rows[2][2]
+
     
     def find_items_by_list_id(self, list_id):
         """Returns items by list id.
@@ -109,8 +126,8 @@ class ItemRepository:
             (list_id,)
         )
 
-        row = cursor.fetchall()
-        return get_item(row)
+        rows = cursor.fetchall()
+        return get_item(rows)
 
 
     

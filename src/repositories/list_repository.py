@@ -1,11 +1,10 @@
 from entities.list import List
-from repositories.user_repository import UserRepository
 from database_connection import get_database_connection
 
 
 def get_list(row):
     #find list 
-    return List(row["list_id"], row["list_name"]) if row else None
+    return List(row["list_id"], row["list_name"], row["username"]) if row else None
 
 
 class ListRepository:
@@ -21,7 +20,18 @@ class ListRepository:
         self._connection = connection
 
 
-    def create_list(self, list):
+    def get_list_by_name(self,list_name):
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "select * from lists where list_name = ?",
+            (list_name,)
+        )
+        whole_list = cursor.fetchone()
+        return whole_list
+    
+
+    def create_list(self, list_name, username):
         """Creates a new list and returns the List-object of the new list.
 
         Args:
@@ -34,11 +44,12 @@ class ListRepository:
 
         cursor.execute(
             "insert into lists (list_name, username) values (?, ?)",
-            (list.list_name, list.username)
+            (list_name, username)
         )
 
         self._connection.commit()
-        return list
+        return self.get_list_by_name(list_name)
+
     
 
     def get_list_id(self,list_name):
@@ -57,7 +68,7 @@ class ListRepository:
             (list_name,)
         )
         list_id = cursor.fetchone()
-        return list_id
+        return list_id[0]
     
     def find_all(self):
         """Returns all lists.
@@ -85,15 +96,13 @@ class ListRepository:
         """
         cursor = self._connection.cursor()
 
-        username = UserRepository.get_user_id(username)
-
         cursor.execute(
             "select * from lists where username = ?",
             (username,)
         )
 
-        row = cursor.fetchall()
-        return get_list(row)
+        rows = cursor.fetchall()
+        return rows[0][0]
 
 
     def delete_list(self, list_name):

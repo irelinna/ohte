@@ -12,7 +12,7 @@ class TestItemRepository(unittest.TestCase):
         self.bread = Item(2,1,'bread')
 
     def test_create_item(self):
-        item_repository.create_item(self.banana)
+        item_repository.create_item(self.banana.list_id, self.banana.content)
         items = item_repository.find_all()
 
         self.assertEqual(len(items), 1)
@@ -20,17 +20,16 @@ class TestItemRepository(unittest.TestCase):
 
 
     def test_get_item_id(self):
-        item_repository.create_item(self.banana)
-        items = item_repository.find_all()
+        item_repository.create_item(self.banana.list_id, self.banana.content)
 
         item_id = item_repository.get_item_id(self.banana.content)
 
-        self.assertEqual(items[0].item_id, item_id)
+        self.assertEqual(item_id, self.banana.item_id)
 
 
     def test_find_all(self):
-        item_repository.create_item(self.banana)
-        item_repository.create_item(self.bread)
+        item_repository.create_item(self.banana.list_id, self.banana.content)
+        item_repository.create_item(self.bread.list_id, self.bread.content)
         items = item_repository.find_all()
 
         self.assertEqual(len(items), 2)
@@ -39,16 +38,16 @@ class TestItemRepository(unittest.TestCase):
 
 
     def test_find_items_by_list_name(self):
-        list_repository.create_list()
-        item_repository.create_item(self.banana)
+        item_repository.create_item(self.banana.list_id, self.banana.content)
+
         items = item_repository.find_items_by_list_name("lista1")
 
         self.assertEqual(items[0].item_id, self.banana.item_id)
 
 
     def test_find_items_by_list_id(self):
-        item_repository.create_item(self.banana)
-        item_repository.create_item(self.bread)
+        item_repository.create_item(self.banana.list_id, self.banana.content)
+        item_repository.create_item(self.bread.list_id, self.bread.content)
 
         items = item_repository.find_items_by_list_id(1)
         self.assertEqual(items[0][1], self.banana.item_id)

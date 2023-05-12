@@ -18,6 +18,25 @@ class UserRepository:
         """
 
         self._connection = connection
+
+    def get_user_id(self,username):
+        """Get user_id from username.
+
+        Args:
+            username: The username of the user whose id should be returned.
+
+        Returns:
+            Returns user_id.
+        """
+        cursor = self._connection.cursor()
+
+        cursor.execute(
+            "select user_id from users where username = ?",
+            (username,)
+        )
+
+        row = cursor.fetchone()
+        return get_user(row)[2]
         
 
     def find_by_username(self, username):
