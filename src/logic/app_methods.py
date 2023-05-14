@@ -1,6 +1,4 @@
-from entities.item import Item
 from entities.user import User
-from entities.list import List
 
 from repositories.item_repository import (
     item_repository as default_item_repository
@@ -24,7 +22,7 @@ class AppMethods:
     """The logic and structure of the application is here.
     """
     def __init__(
-        
+
         self,
         item_repository=default_item_repository,
         user_repository=default_user_repository,
@@ -33,11 +31,16 @@ class AppMethods:
         """Constructor
 
         Args:
-            item_repository: Object that has methods set from the ItemRepository class. Defaults to default_item_repository.
-            user_repository: Object that has methods set from the UserRepository class. Defaults to default_user_repository.
-            list_repository: Object that has methods set from the ListRepository class. Defaults to default_list_repository.
+            item_repository: Object that has methods set from the ItemRepository class. 
+            Defaults to default_item_repository.
+
+            user_repository: Object that has methods set from the UserRepository class. 
+            Defaults to default_user_repository.
+
+            list_repository: Object that has methods set from the ListRepository class. D
+            efaults to default_list_repository.
         """
-        print('testing 123')
+
         self._user = None
         self._item_repository = item_repository
         self._user_repository = user_repository
@@ -58,10 +61,10 @@ class AppMethods:
 
 
         return self._item_repository.create_item(list_id, content)
-    
 
 
-    def create_list(self, list_name):
+
+    def create_list(self, list_name, username):
         """Creates a new list and saves it to list_repository.
 
         Args:
@@ -70,11 +73,11 @@ class AppMethods:
         Returns:
             The created List-object.
         """
-       
 
-        return self._list_repository.create_list(list_name, self._user)
-    
-    
+
+        return self._list_repository.create_list(list_name, username)
+
+
     def delete_list(self, list_name):
         """Deletes the given list.
 
@@ -83,7 +86,7 @@ class AppMethods:
         """
 
         self._list_repository.delete_list(list_name)
-    
+
 
 
     def get_list_id(self, list_name):
@@ -99,7 +102,7 @@ class AppMethods:
         list_id = self._list_repository.get_list_id(list_name)
 
         return list_id
-    
+
 
     def add_item_to_list(self, item_name, list_name):
         """Add item to existing list.
@@ -114,8 +117,8 @@ class AppMethods:
 
         list_id = self._list_repository.get_list_id(list_name)
 
-        return self.create_item(item_name, list_id)
-    
+        return self.create_item(list_id,item_name)
+
 
     def find_list_by_name(self, list_name):
         """Finds list by name.
@@ -128,6 +131,7 @@ class AppMethods:
         """
 
         items = self._item_repository.find_items_by_list_name(list_name)
+
         return items
 
 
@@ -137,9 +141,6 @@ class AppMethods:
         Args:
             username: String representing the username of the user.
             password: String representing the password of the user.
-
-        Raises:
-            InvalidCredentialsError: Exception is raised if the username or password given are invalid.
 
         Returns:
             The user that has logged in.
@@ -175,7 +176,8 @@ class AppMethods:
             login: True if the user is logged in. Defaults to True.
 
         Raises:
-            UsernameExistsError: Error is raised if the username of the new user already exists in the database.
+            UsernameExistsError: Error is raised if the username 
+            of the new user already exists in the database.
 
         Returns:
             The User-object just created.
@@ -183,19 +185,18 @@ class AppMethods:
         username_exists = self._user_repository.find_by_username(username)
 
         if username_exists:
-            raise UsernameExistsError(f"Username {username} already exists")
+            print(f"username {username} already exists.\n")
 
-        user = self._user_repository.create_user(User(username, password))
+        else:
+            user = self._user_repository.create_user(User(username, password))
 
-        if login:
-            self._user = user
+            if login:
+                self._user = user
 
-        return user
-    
+            return user
 
 
-class InvalidCredentialsError(Exception):
-    pass
+
 
 
 class UsernameExistsError(Exception):

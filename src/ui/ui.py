@@ -19,24 +19,23 @@ class UserInterface:
         """Constructor
         """
         self._methods = app_methods
-        print('app_methods', dir(app_methods))
     
 
     def start(self):
         """Starts the application and shows the UI to the user.
         """
 
-        print("Grocery list app")
+        print("Grocery list app\n")
         self._print_instructions()
 
         while True:
             action = input("action: ")
             if not action in ACTIONS:
-                print("nonexistent action")
+                print("nonexistent action\n")
                 self._print_instructions()
                 continue
             elif action == "" or action == None:
-                print("empty input is not valid")
+                print("empty input is not valid\n")
                 self._print_instructions()
             elif action == "0":
                 break
@@ -59,21 +58,28 @@ class UserInterface:
     def _print_instructions(self):
         """Prints instructions from dictionary ACTIONS.
         """
+        user = self._methods.get_user()
+        if user:
+            print("current user is: ", user.username)
 
         for value in ACTIONS.items():
             print(value[1])
+        print("\n")
 
 
     def _login(self):
         """Reads input for login.
         """
-        username = input("username: ")
-        password = input("password: ")
-
-        if self._methods.login(username,password) == False:
-            print("Invalid username or password")
+        if self._methods.get_user() == None:
+            username = input("username: ")
+            password = input("password: ")
+            if self._methods.login(username,password) == False:
+                print("Invalid username or password\n")
+            else:
+                print("Logged in successfully!\n")
         else:
-            print("Logged in successfully!\n")
+            print("You seem to be logged in already. Log out first.\n")
+
 
         self._print_instructions()
 
@@ -82,12 +88,14 @@ class UserInterface:
         """UI for creating a new user.
         """
         if self._methods.get_user() == None:
-            print("creating new user:")
+            print("creating new user:\n")
             username = input("username: ")
             password = input("password: ")
+            print("\n")
             self._methods.create_user(username,password)
+            self._print_instructions()
         else:
-            action = input("You seem to be logged in. Do you want to log out? y/n")
+            action = input("You seem to be logged in. Do you want to log out? (y/n)\n")
             if action == "y":
                 self._logout()
             elif action == "n":
@@ -95,61 +103,65 @@ class UserInterface:
             else:
                 print("invalid action")
                 self._print_instructions()
-
-    def _create_item(self, list_id, content):
-        """Used for creating an item. Not in actions, you can only 
-        create a new item manually by adding it to an existing list.
-
-        Args:
-            content: item name
-            list_id: List id of the list the item should be added to.
-        """
-        self._methods.create_item(list_id,content)
         
 
     def _create_list(self):
         """UI for creating a new list.
         """
         if self._methods.get_user() == None:
-            print("you don't seem to be logged in.")
-            self._print_instructions()
+            print("you must be logged in to create a list.\n")
+        else:
+            username = self._methods.get_user().username
+            print("creating list")
+            list_name = input("list name:\n")
+            self._methods.create_list(list_name, username)
 
-        print("creating list")
-        list_name = input("list name: ")
-        self._methods.create_list(list_name)
+            list_id = self._methods.get_list_id(list_name)
 
-        list_id = self._methods.get_list_id(list_name)
+            print("write the items you want to add one at a time, write exit to finish list:")
+            item_name = "item"
+            while item_name != 'exit':
+                if item_name == "" or item_name == " ":
+                    print("empty items cannot be added")
+                item_name = input("item: ")
+                if item_name == 'exit':
+                    print("\n")
+                    break
 
-        item_name = input("write the items you want to add one at a time, write exit to finish list:")
-
-        while True:
-            if item_name == 'exit':
-                break
-            else:
                 self._methods.create_item(list_id,item_name)
+
         
         self._print_instructions()
 
     def _find_list(self):
-        """Finds a list by name.
+        """Finds a list by list name and prints out items from that list.
         """
-        list_name = input("which list would you like to see:")
+        list_name = input("which list would you like to see:\n")
 
-        self._methods.find_list_by_name(list_name)
+        items = self._methods.find_list_by_name(list_name)
+
+        print("Here are the items from list", list_name, ":")
+        for item in items:
+            print(item)
+        print("\n")
+        
+        self._print_instructions()
 
 
     def _delete_list(self):
         """Deletes a list.
         """
-        list_name = input("which list would you like removed: ")
+        list_name = input("which list would you like removed:\n")
         self._methods.delete_list(list_name)
+        print("list removed successfully.\n")
         self._print_instructions()
 
 
     def _add_item_to_list(self):
-        "UI for adding an item to an existing list."
-        item = input("which item would you like to add?:")
-        list = input("which list would you like to add it to?:")
+        """UI for adding an item to an existing list."""
+
+        item = input("which item would you like to add?:\n")
+        list = input("which list would you like to add it to?:\n")
 
         self._methods.add_item_to_list(item,list)
         print("item added to list.\n")
