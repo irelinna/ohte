@@ -9,12 +9,12 @@ Sovelluksen avulla käyttäjät pystyvät luomaan ostoslistoja.
 Sovelluksella on ainoastaan yksi käyttäjärooli eli normaali käyttäjä. 
 
 
-## Suunnitellut toiminnallisuudet
+## Toteutetut toiminnallisuudet
 Ennen kirjautumista:
 - Käyttäjä voi luoda käyttäjätunnuksen.
-- Käyttäjätunnuksen luomiseen vaaditaan uniikki käyttäjätunnus, joka on vähintään 3 merkkiä.
+- Käyttäjätunnuksen luomiseen vaaditaan uniikki käyttäjätunnus.
 - Tunnuksen luomiseen vaaditaan myös salasama
-- Käyttäjätunnuksen luotuaan käyttäjä voi kirjautua sovellukseen kirjautumislomakkeella, johon syötetään käyttäjätunnus ja salasana.
+- Käyttäjätunnuksen luotuaan käyttäjä voi kirjautua sovellukseen käyttöliittymästä, jossa syötetään käyttäjätunnus ja salasana.
 - Jos käyttäjää ei olemassa, tai salasana ei täsmää, ilmoittaa järjestelmä tästä
 
 Kirjautumisen jälkeen:
@@ -22,3 +22,7 @@ Kirjautumisen jälkeen:
 - Käyttäjä voi lisätä uusia tavaroita ostoslistalle
 - Käyttäjä voi poistaa ostoslistan
 - Käyttäjä voi kirjautua ulos järjestelmästä
+
+## Mahdollisia jatkokehitysideoita
+- Sovellusta voisi kehittää eteenpäin esimerkiksi niin, että listoja voi muokata suuremmalla vapaudella, tällä hetkellä vain asioiden lisääminen olemassaolevaan listaan on mahdollista, mutta ei asioiden poisto erikseen listalta. 
+- Graafinen käyttöliittymä olisi myös mahdollinen asia toteuttaa käyttäjäkokemuksen kannalta.
