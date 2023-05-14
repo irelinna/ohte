@@ -13,6 +13,8 @@ Sovelluksen avulla käyttäjät voivat luoda ostoslistoja, ja lisätä sinne hal
 
 [arkkitehtuuri](https://github.com/irelinna/ohte/blob/main/dokumentaatio/arkkitehtuuri.md)
 
+[käyttöohje](https://github.com/irelinna/ohte/blob/main/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
+
 ### Ohjelman suoritus:
 Asenna riippuvuudet terminaalissa komennolla: poetry install
 
