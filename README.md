@@ -29,3 +29,6 @@ Generoi testikattavuusraportti komennolla: poetry run invoke coverage-report
 
 ### Pylint:
 Suorita pylintin laatutarkistukset komennolla: poetry run invoke lint
+
+
+HUOM: en voinut päivittää projektin nimeä Labtooliin ennen deadlinea, Labtoolin sivusto ei toimi
