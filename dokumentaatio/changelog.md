@@ -21,3 +21,6 @@ Projektin suunnittelua
 - sovelluksen voi käynnistää (omalla koneella ainakin, testaan loppupalautukseen että varmasti toimii laitoksen koneilla) ja kaikki palaset ovat olemassa, säädän vielä käyttöliittymän kanssa hieman että se toimisi kunnolla
 - testejä kirjoitettu item_repositorylle ja user_repositorylle
 
+## Viikko 7
+- sovelluksen voi käynnistää, ja käyttöliittymässä olevat toiminnot voi suorittaa. Näihin lukeutuu mm. login ja logout, uusien listojen luonti ja tavaroiden lisääminen niihin. 
+- testausta viety eteenpäin
