@@ -10,6 +10,11 @@ class TestListRepository(unittest.TestCase):
         self.lista1 = List(1,"lista1",'irene')
         self.lista2 = List(2,"lista2",'irene')
 
+    def test_get_list_by_name(self):
+        list_repository.create_list(self.lista1.list_name, self.lista1.username)
+        list_by_name = list_repository.get_list_by_name(self.lista1.list_name)
+        self.assertEqual(list_by_name[1],self.lista1.list_name)
+
     def test_create_list(self):
         list_repository.create_list(self.lista1.list_name, self.lista1.username)
         lists = list_repository.find_all()
@@ -23,11 +28,3 @@ class TestListRepository(unittest.TestCase):
         list_id = list_repository.get_list_id(self.lista1.list_name)
         self.assertEqual(list_id, self.lista1.list_id)
 
-
-    def test_find_lists_by_username(self):
-        list_repository.create_list(self.lista1.list_name, self.lista1.username)
-        list_repository.create_list(self.lista2.list_name, self.lista2.username)
-
-        lists = list_repository.find_lists_by_username(self.lista1.username)
-        print(lists)
-        self.assertEqual("irene",self.lista1.username)

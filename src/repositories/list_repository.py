@@ -3,7 +3,7 @@ from database_connection import get_database_connection
 
 
 def get_list(row):
-    #find list 
+    #find list
     return List(row["list_id"], row["list_name"], row["username"]) if row else None
 
 
@@ -29,7 +29,7 @@ class ListRepository:
         )
         whole_list = cursor.fetchone()
         return whole_list
-    
+
 
     def create_list(self, list_name, username):
         """Creates a new list and returns the List-object of the new list.
@@ -50,7 +50,7 @@ class ListRepository:
         self._connection.commit()
         return self.get_list_by_name(list_name)
 
-    
+
 
     def get_list_id(self,list_name):
         """Finds list id when given list name.
@@ -68,8 +68,11 @@ class ListRepository:
             (list_name,)
         )
         list_id = cursor.fetchone()
+        if list_id is None:
+            print("The list you're looking for cannot be found.")
         return list_id[0]
-    
+
+
     def find_all(self):
         """Returns all lists.
         Returns:
@@ -84,25 +87,6 @@ class ListRepository:
 
         return list(map(get_list, rows))
 
-
-    def find_lists_by_username(self, username):
-        """Returns lists by username.
-
-        Args:
-            username: The username of the user whose created lists should be returned.
-
-        Returns:
-            Returns a list of List-objects.
-        """
-        cursor = self._connection.cursor()
-
-        cursor.execute(
-            "select * from lists where username = ?",
-            (username,)
-        )
-
-        rows = cursor.fetchall()
-        return rows[0][0]
 
 
     def delete_list(self, list_name):

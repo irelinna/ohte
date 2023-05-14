@@ -4,7 +4,7 @@ from database_connection import get_database_connection
 
 
 def get_user(row):
-    
+
     return User(row["username"], row["password"]) if row else None
 
 
@@ -37,7 +37,7 @@ class UserRepository:
 
         row = cursor.fetchone()
         return get_user(row)[2]
-        
+
 
     def find_by_username(self, username):
         """Returns user by username.
@@ -78,8 +78,8 @@ class UserRepository:
 
         self._connection.commit()
         return user
-    
-    
+
+
     def find_all(self):
         """Returns all existing users.
         Returns:
@@ -93,7 +93,8 @@ class UserRepository:
         rows = cursor.fetchall()
 
         return list(map(get_user, rows))
-    
+
+
     def delete_all(self):
         """Deletes all users.
         """
@@ -103,7 +104,6 @@ class UserRepository:
         cursor.execute("delete from users")
 
         self._connection.commit()
-
 
 
 user_repository = UserRepository(get_database_connection())

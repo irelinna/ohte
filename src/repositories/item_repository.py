@@ -46,8 +46,8 @@ class ItemRepository:
 
         self._connection.commit()
         return self.get_item_by_name(content)
-    
-    
+
+
     def get_item_id(self,content):
         """Finds item id when given item content.
 
@@ -65,7 +65,7 @@ class ItemRepository:
         )
         item_id = cursor.fetchone()
         return item_id[0]
-    
+
     def find_all(self):
         """Returns all existing items.
         Returns:
@@ -82,14 +82,14 @@ class ItemRepository:
 
 
     def find_items_by_list_name(self, list_name):
-        
+
         """Returns items by list name.
 
         Args:
             list_name: The name of the list.
 
         Returns:
-            Returns a list of Item-objects.
+            Returns a list of items.
         """
         cursor = self._connection.cursor()
 
@@ -101,15 +101,14 @@ class ItemRepository:
         )
 
         rows = cursor.fetchall()
-        #prints kahvi, want to print all items from a list. 
-        #seems that there is a lot of duplicate data in the database
-        for row in rows:
-            print(rows[row[0]][2])
-        print(rows[0][2])
-        print(rows[4][2])
-        return rows[2][2]
 
-    
+        items = []
+        for row in rows:
+            item = str(row[2])
+            items.append(item)
+        return items
+
+
     def find_items_by_list_id(self, list_id):
         """Returns items by list id.
 
@@ -127,10 +126,10 @@ class ItemRepository:
         )
 
         rows = cursor.fetchall()
-        return get_item(rows)
+        return list(map(get_item, rows))
 
 
-    
+
     def delete_all(self):
         """Deletes all items.
         """
