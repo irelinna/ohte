@@ -17,4 +17,7 @@ ei harjoitustyötä
 
 12 tuntia käyttöliittymän tekemiseen, dokumentaatioon, lisätesteihin
 
-#### tähän mennessä yhteensä n. 40h
+###### Viikko 7:
+Noin 12 tuntia sovelluksen viimeistelyyn.
+
+#### yhteensä n. 52h
