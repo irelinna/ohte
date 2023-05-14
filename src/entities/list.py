@@ -1,5 +1,5 @@
 class List:
-    
+
     """A class for a list, which is a collection of items.
     Attributes: list_id: the id of the list
     list_name: the name of the list

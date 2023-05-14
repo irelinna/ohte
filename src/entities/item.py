@@ -1,5 +1,5 @@
 class Item:
-     
+
     """A class for an individual item.
 
     Attributes: item_id: the id of an item
